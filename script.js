@@ -1,7 +1,5 @@
 function createGrid(gridsize){
     const grid = document.querySelector('#grid');
-    // grid.style.height = '100px'
-    // grid.style.width = '100px';
 
     for (let i=0;i<gridsize;i++){
         const container = document.createElement("div");
@@ -14,25 +12,25 @@ function createGrid(gridsize){
             const box = document.createElement("div");
             box.setAttribute('id',`'box${j}'`);
             box.setAttribute('class','box')
-            box.style.height = string(gridsize);
-            box.style.width = string(gridsize);
+            box.style.height = String(800/gridsize)+'px';
+            box.style.width = String(800/gridsize)+'px';
             container.append(box);
         }
     }
  
 }
 
-createGrid(4);
+createGrid(16);
 
-const box = document.createElement("div");
+// const box = document.createElement("div");
 
-//Attempting to set an elements size attribute to dynamic value
+// //Attempting to set an elements size attribute to dynamic value
 
-//does not set the attribute correctly
-box.style.height = string(size);
+// //does not set the attribute correctly
+// box.style.height = string(size);
 
-//does not set the attribute correctly
-box.style.height = `'${size}'`;
+// //does not set the attribute correctly
+// box.style.height = `'${size}'`;
 
-//set it correctly when hardcoded as you would expect
-box.style.height = '10px';
+// //set it correctly when hardcoded as you would expect
+// box.style.height = '10px';
