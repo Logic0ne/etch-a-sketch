@@ -1,4 +1,4 @@
-function createGrid(gridsize){
+function createGrid(gridsize,screen){
     const grid = document.querySelector('#grid');
 
     for (let i=0;i<gridsize;i++){
@@ -11,8 +11,8 @@ function createGrid(gridsize){
             const box = document.createElement("div");
             box.setAttribute('id',`'box${j}'`);
             box.setAttribute('class','box')
-            box.style.height = String(400/gridsize)+'px';
-            box.style.width = String(400/gridsize)+'px';
+            box.style.height = String(screen/gridsize)+'px';
+            box.style.width = String(screen/gridsize)+'px';
             container.append(box);
             box.addEventListener('mouseover', function mouse(e) {
                 console.log(e);
@@ -20,7 +20,8 @@ function createGrid(gridsize){
                     visitedArray[i][j][1]=getRandomInt();
                     visitedArray[i][j][2]=getRandomInt();
                     visitedArray[i][j][3]=getRandomInt();
-                    box.style.backgroundColor = `rgb(${visitedArray[i][j][1]}, ${visitedArray[i][j][2]}, ${visitedArray[i][j][3]})`;
+                    box.style.backgroundColor = 
+                    `rgb(${visitedArray[i][j][1]}, ${visitedArray[i][j][2]}, ${visitedArray[i][j][3]})`;
                 }
                 else if (visitedArray[i][j][0]>0){
                     let newR =visitedArray[i][j][1]-(visitedArray[i][j][1]*((0.1*visitedArray[i][j][0])));
@@ -30,7 +31,6 @@ function createGrid(gridsize){
                 }
                 visitedArray[i][j][0]+=1;
             });
-
         }
     }
 }
@@ -62,7 +62,24 @@ function twoDimensionArray(a) {
     return arr;
 }
 
-let size = 10;
-let visitedArray = twoDimensionArray(size);
-createGrid(size);
+function getuserGrid(){
+    return window.prompt("Enter the size of the grid (1-100)");
+}
 
+//initial Settings
+let size = 16;
+let screen = 400;
+let visitedArray = twoDimensionArray(size);
+createGrid(size,screen);
+
+const btn =  document.querySelector('#reload');
+btn.addEventListener('click', function clickhandler(e) {
+    do{
+        number = parseInt(getuserGrid());
+    }
+    while (((number>100))||(number<1))
+
+    document.querySelector('#grid').innerHTML = '';
+    visitedArray = twoDimensionArray(number);
+    createGrid(number, screen);
+});
