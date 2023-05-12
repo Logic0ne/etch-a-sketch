@@ -21,6 +21,5 @@ body {
 }
 
 .box {
-    /* background-color: red; */
     display: flex;
 }
