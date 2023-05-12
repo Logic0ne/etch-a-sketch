@@ -1,18 +1,26 @@
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
 #grid {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    border: 5px solid black;
 
 }
-
 .container {
     display: flex;
     flex-direction: column;
 
+
 }
 
 .box {
-    background-color: red;
+    /* background-color: red; */
     display: flex;
 }
